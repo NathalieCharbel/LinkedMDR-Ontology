@@ -1,0 +1,1899 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY mpeg7 "http://mpeg7.org/#" >
+    <!ENTITY dc "http://purl.org/dc/terms/" >
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY lmdr "http://spider.sigappfr.org/linkedmdr/#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY ifc "http://www.buildingsmart-tech.org/ifcOWL/IFC4_ADD2#" >
+    <!ENTITY tei "http://www.tei-c.org/release/doc/tei-p5-doc/en/html/#" >
+]>
+
+
+<rdf:RDF xmlns="http://spider.sigappfr.org/linkedmdr/#"
+     xml:base="http://spider.sigappfr.org/linkedmdr/"
+     xmlns:dc="http://purl.org/dc/terms/"
+     xmlns:mpeg7="http://mpeg7.org/#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:tei="http://www.tei-c.org/release/doc/tei-p5-doc/en/html/#"
+     xmlns:lmdr="http://spider.sigappfr.org/linkedmdr/#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:ifc="http://www.buildingsmart-tech.org/ifcOWL/IFC4_ADD2#">
+    <owl:Ontology rdf:about="http://spider.sigappfr.org/linkedmdr/#"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/dc/terms/hasFormat -->
+
+    <owl:ObjectProperty rdf:about="&dc;hasFormat">
+        <rdf:type rdf:resource="&owl;SymmetricProperty"/>
+        <rdfs:comment xml:lang="en">Describes a related document or media that is substantially the same as the current document or media, but in another format</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="&lmdr;SyntacticRelation"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/hasVersion -->
+
+    <owl:ObjectProperty rdf:about="&dc;hasVersion">
+        <rdf:type rdf:resource="&owl;SymmetricProperty"/>
+        <rdfs:comment xml:lang="en">Describes characteristics related to the form of the object</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="&lmdr;SyntacticRelation"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/isReferenceBy -->
+
+    <owl:ObjectProperty rdf:about="&dc;isReferenceBy">
+        <owl:equivalentProperty rdf:resource="&lmdr;isReferencedBy"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/isRequiredBy -->
+
+    <owl:ObjectProperty rdf:about="&dc;isRequiredBy">
+        <owl:equivalentProperty rdf:resource="&lmdr;isRequiredBy"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/references -->
+
+    <owl:ObjectProperty rdf:about="&dc;references">
+        <owl:equivalentProperty rdf:resource="&lmdr;references"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/requires -->
+
+    <owl:ObjectProperty rdf:about="&dc;requires">
+        <owl:equivalentProperty rdf:resource="&lmdr;requires"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/source -->
+
+    <owl:ObjectProperty rdf:about="&dc;source">
+        <owl:equivalentProperty rdf:resource="&lmdr;source"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#Aggregates -->
+
+    <owl:ObjectProperty rdf:about="&lmdr;Aggregates">
+        <rdfs:comment xml:lang="en">Describes an aggregation between objects</rdfs:comment>
+        <owl:inverseOf rdf:resource="&lmdr;isAggregatedBy"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#DirectionalRelation -->
+
+    <owl:ObjectProperty rdf:about="&lmdr;DirectionalRelation">
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+        <rdfs:comment xml:lang="en">Describes the position of an object w.r.t. another object in space </rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="&lmdr;SpatialRelation"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#OrderRelation -->
+
+    <owl:ObjectProperty rdf:about="&lmdr;OrderRelation">
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+        <rdfs:comment xml:lang="en">Describes a positioning order relation between two media or a media components</rdfs:comment>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&lmdr;Media"/>
+                    <rdf:Description rdf:about="&lmdr;MediaComponent"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&lmdr;Media"/>
+                    <rdf:Description rdf:about="&lmdr;MediaComponent"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#SemanticRelation -->
+
+    <owl:ObjectProperty rdf:about="&lmdr;SemanticRelation">
+        <rdfs:comment xml:lang="en">Describes semantic characteristics related to the content of the object</rdfs:comment>
+        <rdfs:domain rdf:resource="&lmdr;Object"/>
+        <rdfs:range rdf:resource="&lmdr;Object"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#SpatialRelation -->
+
+    <owl:ObjectProperty rdf:about="&lmdr;SpatialRelation">
+        <rdfs:comment xml:lang="en">Describes relations between objects in space</rdfs:comment>
+        <rdfs:range rdf:resource="&lmdr;Object"/>
+        <rdfs:domain rdf:resource="&lmdr;Object"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#SyntacticRelation -->
+
+    <owl:ObjectProperty rdf:about="&lmdr;SyntacticRelation">
+        <rdf:type rdf:resource="&owl;SymmetricProperty"/>
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+        <rdfs:comment xml:lang="en">Describes characteristics related to the form of the document or the media</rdfs:comment>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&lmdr;Document"/>
+                    <rdf:Description rdf:about="&lmdr;Media"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&lmdr;Document"/>
+                    <rdf:Description rdf:about="&lmdr;Media"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#TemporalRelation -->
+
+    <owl:ObjectProperty rdf:about="&lmdr;TemporalRelation">
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+        <rdfs:comment xml:lang="en">Describes the ordering in time between two objects</rdfs:comment>
+        <rdfs:domain rdf:resource="&lmdr;Object"/>
+        <rdfs:range rdf:resource="&lmdr;Object"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#TopologicalRelation -->
+
+    <owl:ObjectProperty rdf:about="&lmdr;TopologicalRelation">
+        <rdfs:comment xml:lang="en">Describes structural relations between objects in space</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="&lmdr;SpatialRelation"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#annotates -->
+
+    <owl:ObjectProperty rdf:about="&lmdr;annotates">
+        <rdfs:comment xml:lang="en">Describes an annotation of an image</rdfs:comment>
+        <rdfs:range rdf:resource="&lmdr;ImageAnnotation"/>
+        <owl:inverseOf rdf:resource="&lmdr;isAnnotatedBy"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&mpeg7;StillRegion"/>
+                    <rdf:Description rdf:about="&lmdr;TextElement"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#appliesTo -->
+
+    <owl:ObjectProperty rdf:about="&lmdr;appliesTo">
+        <rdfs:comment xml:lang="en">Describes a relation between changes applied to an object and the latter</rdfs:comment>
+        <rdfs:range rdf:resource="&lmdr;Object"/>
+        <owl:inverseOf rdf:resource="&lmdr;hasChange"/>
+        <rdfs:domain rdf:resource="&tei;change"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#comprises -->
+
+    <owl:ObjectProperty rdf:about="&lmdr;comprises">
+        <rdfs:comment xml:lang="en">Describes a containmenet relation between a page or a line and elements in the text</rdfs:comment>
+        <rdfs:range rdf:resource="&lmdr;TextElement"/>
+        <owl:inverseOf rdf:resource="&lmdr;isOn"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&tei;lb"/>
+                    <rdf:Description rdf:about="&tei;pb"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#describes -->
+
+    <owl:ObjectProperty rdf:about="&lmdr;describes">
+        <rdfs:comment xml:lang="en">Represents a relation between the description associated to an image region and the latter</rdfs:comment>
+        <rdfs:domain rdf:resource="&mpeg7;SemanticDescription"/>
+        <rdfs:range rdf:resource="&mpeg7;StillRegion"/>
+        <owl:inverseOf rdf:resource="&lmdr;isAssociatedTo"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#disjoints -->
+
+    <owl:ObjectProperty rdf:about="&lmdr;disjoints">
+        <rdf:type rdf:resource="&owl;SymmetricProperty"/>
+        <rdfs:comment xml:lang="en">Describes a relation between two obejcts that have no common elements in space </rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="&lmdr;TopologicalRelation"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#hasChange -->
+
+    <owl:ObjectProperty rdf:about="&lmdr;hasChange">
+        <rdfs:domain rdf:resource="&lmdr;Object"/>
+        <rdfs:range rdf:resource="&tei;change"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#hasIfcProperty -->
+
+    <owl:ObjectProperty rdf:about="&lmdr;hasIfcProperty">
+        <rdfs:comment xml:lang="en">Describes a relation between a property and an IFC concept. It replaces complex relations between a user defined property and a concept in IFC.</rdfs:comment>
+        <owl:inverseOf rdf:resource="&lmdr;isIfcPropertyOf"/>
+        <rdfs:range rdf:resource="&ifc;IfcProperty"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&ifc;IfcBuildingElement"/>
+                    <rdf:Description rdf:about="&ifc;IfcDistributionElement"/>
+                    <rdf:Description rdf:about="&ifc;IfcOpeningElement"/>
+                    <rdf:Description rdf:about="&ifc;IfcSpatialElement"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#hasPart -->
+
+    <owl:ObjectProperty rdf:about="&lmdr;hasPart">
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+        <rdfs:comment xml:lang="en">Describes a whole part relation between objects</rdfs:comment>
+        <owl:inverseOf rdf:resource="&lmdr;isPartOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#hasPart_Object -->
+
+    <owl:ObjectProperty rdf:about="&lmdr;hasPart_Object">
+        <rdfs:label xml:lang="fr">hasPart</rdfs:label>
+        <rdfs:comment xml:lang="en">Describes a whole part relation between two objects</rdfs:comment>
+        <rdfs:domain rdf:resource="&lmdr;Object"/>
+        <rdfs:range rdf:resource="&lmdr;Object"/>
+        <rdfs:subPropertyOf rdf:resource="&lmdr;hasPart"/>
+        <owl:inverseOf rdf:resource="&lmdr;isPartOf_Object"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#hasPart_mpeg7 -->
+
+    <owl:ObjectProperty rdf:about="&lmdr;hasPart_mpeg7">
+        <rdfs:label>hasPart</rdfs:label>
+        <rdfs:comment xml:lang="en">Describes a whole part relation between mpeg-7 elements</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="&lmdr;hasPart"/>
+        <owl:inverseOf rdf:resource="&lmdr;isPartOf_mpeg7"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#hasPart_mpeg7Image -->
+
+    <owl:ObjectProperty rdf:about="&lmdr;hasPart_mpeg7Image">
+        <rdfs:label>hasPart</rdfs:label>
+        <rdfs:comment xml:lang="en">Describes a whole part relation between mpeg-7 Image concept and any direct image component such as Spatial Mask or Still Region or Image Annotation</rdfs:comment>
+        <rdfs:domain rdf:resource="&lmdr;Image"/>
+        <rdfs:subPropertyOf rdf:resource="&lmdr;hasPart_mpeg7"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&mpeg7;SpatialMask"/>
+                    <rdf:Description rdf:about="&mpeg7;StillRegion"/>
+                    <rdf:Description rdf:about="&lmdr;ImageAnnotation"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#hasPart_mpeg7Polygon -->
+
+    <owl:ObjectProperty rdf:about="&lmdr;hasPart_mpeg7Polygon">
+        <rdfs:label>hasPart</rdfs:label>
+        <rdfs:comment xml:lang="en">Describes a whole part relation between mpeg-7 Polygon concept and any direct polygon component such as Coordinate</rdfs:comment>
+        <rdfs:range rdf:resource="&mpeg7;Coordinate"/>
+        <rdfs:domain rdf:resource="&mpeg7;Polygon"/>
+        <rdfs:subPropertyOf rdf:resource="&lmdr;hasPart_mpeg7"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#hasPart_mpeg7SemanticDescription -->
+
+    <owl:ObjectProperty rdf:about="&lmdr;hasPart_mpeg7SemanticDescription">
+        <rdfs:label>hasPart</rdfs:label>
+        <rdfs:comment xml:lang="en">Describes a whole part relation between mpeg-7 Semantic Description concept and the object it describes</rdfs:comment>
+        <rdfs:range rdf:resource="&mpeg7;Object"/>
+        <rdfs:domain rdf:resource="&mpeg7;SemanticDescription"/>
+        <rdfs:subPropertyOf rdf:resource="&lmdr;hasPart_mpeg7"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#hasPart_mpeg7SpatialMask -->
+
+    <owl:ObjectProperty rdf:about="&lmdr;hasPart_mpeg7SpatialMask">
+        <rdfs:label>hasPart</rdfs:label>
+        <rdfs:comment xml:lang="en">Describes a whole part relation between mpeg-7 Spatial Mask and its related sub-region</rdfs:comment>
+        <rdfs:domain rdf:resource="&mpeg7;SpatialMask"/>
+        <rdfs:range rdf:resource="&mpeg7;SubRegion"/>
+        <rdfs:subPropertyOf rdf:resource="&lmdr;hasPart_mpeg7"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#hasPart_mpeg7StillRegion -->
+
+    <owl:ObjectProperty rdf:about="&lmdr;hasPart_mpeg7StillRegion">
+        <rdfs:label>hasPart</rdfs:label>
+        <rdfs:comment xml:lang="en">Describes a whole part relation between mpeg-7 Still Region concept and any direct still region component such as the semantic description or the visual descriptor or the image annotation </rdfs:comment>
+        <rdfs:domain rdf:resource="&mpeg7;StillRegion"/>
+        <rdfs:subPropertyOf rdf:resource="&lmdr;hasPart_mpeg7"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&mpeg7;SemanticDescription"/>
+                    <rdf:Description rdf:about="&mpeg7;VisualDescriptor"/>
+                    <rdf:Description rdf:about="&lmdr;ImageAnnotation"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#hasPart_mpeg7SubRegion -->
+
+    <owl:ObjectProperty rdf:about="&lmdr;hasPart_mpeg7SubRegion">
+        <rdfs:label>hasPart</rdfs:label>
+        <rdfs:comment xml:lang="en">Describes a whole part relation between mpeg-7 sub-region concept and any direct sub-region component such as the polygon</rdfs:comment>
+        <rdfs:range rdf:resource="&mpeg7;Polygon"/>
+        <rdfs:domain rdf:resource="&mpeg7;SubRegion"/>
+        <rdfs:subPropertyOf rdf:resource="&lmdr;hasPart_mpeg7"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#hasPart_tei -->
+
+    <owl:ObjectProperty rdf:about="&lmdr;hasPart_tei">
+        <rdfs:comment xml:lang="en">Describes a whole part relation between TEI elements</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="&lmdr;hasPart"/>
+        <owl:inverseOf rdf:resource="&lmdr;isPartOf_tei"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#hasPart_teiCell -->
+
+    <owl:ObjectProperty rdf:about="&lmdr;hasPart_teiCell">
+        <rdfs:label>hasPart</rdfs:label>
+        <rdfs:comment xml:lang="en">Describes a whole part relation between a TEI table Cell concept and any direct cell component such as figure or formula or sentence</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="&lmdr;hasPart_tei"/>
+        <rdfs:domain rdf:resource="&tei;cell"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&tei;figure"/>
+                    <rdf:Description rdf:about="&tei;formula"/>
+                    <rdf:Description rdf:about="&tei;s"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#hasPart_teiDiv -->
+
+    <owl:ObjectProperty rdf:about="&lmdr;hasPart_teiDiv">
+        <rdfs:label>hasPart</rdfs:label>
+        <rdfs:comment xml:lang="en">Describes a whole part relation between TEI Div concept and any direct div component such as divgen or figure or div head or list or paragraph or sentence or table</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="&lmdr;hasPart_tei"/>
+        <rdfs:domain rdf:resource="&tei;div"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&tei;divGen"/>
+                    <rdf:Description rdf:about="&tei;figure"/>
+                    <rdf:Description rdf:about="&tei;head"/>
+                    <rdf:Description rdf:about="&tei;list"/>
+                    <rdf:Description rdf:about="&tei;p"/>
+                    <rdf:Description rdf:about="&tei;s"/>
+                    <rdf:Description rdf:about="&tei;table"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#hasPart_teiDivGen -->
+
+    <owl:ObjectProperty rdf:about="&lmdr;hasPart_teiDivGen">
+        <rdfs:label>hasPart</rdfs:label>
+        <rdfs:comment xml:lang="en">Describes a whole part relation between a TEI textual division that is generated automatically (divGen) and any direct divGen component such as the divGen head</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="&lmdr;hasPart_tei"/>
+        <rdfs:domain rdf:resource="&tei;divGen"/>
+        <rdfs:range rdf:resource="&tei;head"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#hasPart_teiFigDesc -->
+
+    <owl:ObjectProperty rdf:about="&lmdr;hasPart_teiFigDesc">
+        <rdfs:label>hasPart</rdfs:label>
+        <rdfs:comment xml:lang="en">Describes a whole part relation between a TEI figure description concept (FigDesc)  and any direct figDesc component such as the associated sentence</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="&lmdr;hasPart_tei"/>
+        <rdfs:domain rdf:resource="&tei;figDesc"/>
+        <rdfs:range rdf:resource="&tei;s"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#hasPart_teiFigure -->
+
+    <owl:ObjectProperty rdf:about="&lmdr;hasPart_teiFigure">
+        <rdfs:label>hasPart</rdfs:label>
+        <rdfs:comment xml:lang="en">Describes a whole part relation between a TEI figure and any direct figure component such as a graphic or a table</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="&lmdr;hasPart_tei"/>
+        <rdfs:domain rdf:resource="&tei;figure"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&tei;graphic"/>
+                    <rdf:Description rdf:about="&tei;table"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#hasPart_teiGraphic -->
+
+    <owl:ObjectProperty rdf:about="&lmdr;hasPart_teiGraphic">
+        <rdfs:comment xml:lang="en">Describes a whole part relation between a TEI graphic concept and any direct graphic component such as the associated figure description</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="&lmdr;hasPart_tei"/>
+        <rdfs:range rdf:resource="&tei;figDesc"/>
+        <rdfs:domain rdf:resource="&tei;graphic"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#hasPart_teiHead -->
+
+    <owl:ObjectProperty rdf:about="&lmdr;hasPart_teiHead">
+        <rdfs:label>hasPart</rdfs:label>
+        <rdfs:comment xml:lang="en">Describes a whole part relation between a TEI head concept and any head component such as the associated sentence</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="&lmdr;hasPart_tei"/>
+        <rdfs:domain rdf:resource="&tei;head"/>
+        <rdfs:range rdf:resource="&tei;s"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#hasPart_teiItem -->
+
+    <owl:ObjectProperty rdf:about="&lmdr;hasPart_teiItem">
+        <rdfs:label>hasPart</rdfs:label>
+        <rdfs:comment xml:lang="en">Describes a whole part relation between a TEI list item concept and any direct list item component such as a figure, a formula, a sentence or a table</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="&lmdr;hasPart_tei"/>
+        <rdfs:domain rdf:resource="&tei;item"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&tei;figure"/>
+                    <rdf:Description rdf:about="&tei;formula"/>
+                    <rdf:Description rdf:about="&tei;s"/>
+                    <rdf:Description rdf:about="&tei;table"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#hasPart_teiList -->
+
+    <owl:ObjectProperty rdf:about="&lmdr;hasPart_teiList">
+        <rdfs:label>hasPart</rdfs:label>
+        <rdfs:comment xml:lang="en">Describes a whole part relation between a TEI list concept and any direct list component such as the associated head or the item component</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="&lmdr;hasPart_tei"/>
+        <rdfs:domain rdf:resource="&tei;list"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&tei;head"/>
+                    <rdf:Description rdf:about="&tei;item"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#hasPart_teiNote -->
+
+    <owl:ObjectProperty rdf:about="&lmdr;hasPart_teiNote">
+        <rdfs:label>hasPart</rdfs:label>
+        <rdfs:comment xml:lang="en">Describes a whole part relation between a TEI note concept and any direct note component such as the associated sentence</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="&lmdr;hasPart_tei"/>
+        <rdfs:domain rdf:resource="&tei;note"/>
+        <rdfs:range rdf:resource="&tei;s"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#hasPart_teiParagraph -->
+
+    <owl:ObjectProperty rdf:about="&lmdr;hasPart_teiParagraph">
+        <rdfs:label>hasPart</rdfs:label>
+        <rdfs:comment xml:lang="en">Describes a whole part relation between a TEI paragraph concept (p) and any direct paragraph component such as figure or list or sentence or table</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="&lmdr;hasPart_tei"/>
+        <rdfs:domain rdf:resource="&tei;p"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&tei;figure"/>
+                    <rdf:Description rdf:about="&tei;formula"/>
+                    <rdf:Description rdf:about="&tei;list"/>
+                    <rdf:Description rdf:about="&tei;s"/>
+                    <rdf:Description rdf:about="&tei;table"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#hasPart_teiRevisionDesc -->
+
+    <owl:ObjectProperty rdf:about="&lmdr;hasPart_teiRevisionDesc">
+        <rdfs:label>hasPart</rdfs:label>
+        <rdfs:comment xml:lang="en">Describes a whole part relation between a TEI revision description (revisionDesc) concept and any direct revisionDesc component such as the associated textal change</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="&lmdr;hasPart_tei"/>
+        <rdfs:range rdf:resource="&tei;change"/>
+        <rdfs:domain rdf:resource="&tei;revisionDesc"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#hasPart_teiRow -->
+
+    <owl:ObjectProperty rdf:about="&lmdr;hasPart_teiRow">
+        <rdfs:label>hasPart</rdfs:label>
+        <rdfs:comment xml:lang="en">Describes a whole part relation between a TEI table row concept and any direct row component such as table cell</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="&lmdr;hasPart_tei"/>
+        <rdfs:range rdf:resource="&tei;cell"/>
+        <rdfs:domain rdf:resource="&tei;row"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#hasPart_teiS -->
+
+    <owl:ObjectProperty rdf:about="&lmdr;hasPart_teiS">
+        <rdfs:label>hasPart</rdfs:label>
+        <rdfs:comment xml:lang="en">Describes a whole part relation between a TEI sentence concept (s) and any direct sentence component such as formula or note or textual segment or word</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="&lmdr;hasPart_tei"/>
+        <rdfs:domain rdf:resource="&tei;s"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&tei;formula"/>
+                    <rdf:Description rdf:about="&tei;note"/>
+                    <rdf:Description rdf:about="&tei;seg"/>
+                    <rdf:Description rdf:about="&tei;w"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#hasPart_teiSeg -->
+
+    <owl:ObjectProperty rdf:about="&lmdr;hasPart_teiSeg">
+        <rdfs:label>hasPart</rdfs:label>
+        <rdfs:comment xml:lang="en">Describes a whole part relation between a TEI textual segment concept (seg) and any direct textual segment component such as the associated sentence</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="&lmdr;hasPart_tei"/>
+        <rdfs:range rdf:resource="&tei;s"/>
+        <rdfs:domain rdf:resource="&tei;seg"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#hasPart_teiTable -->
+
+    <owl:ObjectProperty rdf:about="&lmdr;hasPart_teiTable">
+        <rdfs:label>hasPart</rdfs:label>
+        <rdfs:comment xml:lang="en">Describes a whole part relation between a TEI table concept and any direct table component such as table row</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="&lmdr;hasPart_tei"/>
+        <rdfs:range rdf:resource="&tei;row"/>
+        <rdfs:domain rdf:resource="&tei;table"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#hasPart_teiText -->
+
+    <owl:ObjectProperty rdf:about="&lmdr;hasPart_teiText">
+        <rdfs:label>hasPart</rdfs:label>
+        <rdfs:comment xml:lang="en">Describes a whole part relation between a TEI text concept and any direct text component</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="&lmdr;hasPart_tei"/>
+        <rdfs:domain rdf:resource="&lmdr;text"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#hasProperty -->
+
+    <owl:ObjectProperty rdf:about="&lmdr;hasProperty">
+        <rdfs:comment xml:lang="en">Describes a relation between a document and a document property</rdfs:comment>
+        <rdfs:domain rdf:resource="&lmdr;Document"/>
+        <rdfs:range rdf:resource="&lmdr;DocumentProperty"/>
+        <owl:inverseOf rdf:resource="&lmdr;isPropertyOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#hasRelatedTopics -->
+
+    <owl:ObjectProperty rdf:about="&lmdr;hasRelatedTopics">
+        <rdf:type rdf:resource="&owl;SymmetricProperty"/>
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+        <rdfs:comment xml:lang="en">Describes related topics between two objects</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="&lmdr;SemanticRelation"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#includes -->
+
+    <owl:ObjectProperty rdf:about="&lmdr;includes">
+        <rdfs:comment xml:lang="en">Describes a relation between an object that includes all elements of another object in space </rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="&lmdr;TopologicalRelation"/>
+        <owl:inverseOf rdf:resource="&lmdr;isIncludedBy"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#isAfter -->
+
+    <owl:ObjectProperty rdf:about="&lmdr;isAfter">
+        <rdfs:label>isAfter</rdfs:label>
+        <rdfs:comment xml:lang="en">Describes a concept that is, in time, created after another object</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="&lmdr;TemporalRelation"/>
+        <owl:inverseOf rdf:resource="&lmdr;isBefore"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#isAggregatedBy -->
+
+    <owl:ObjectProperty rdf:about="&lmdr;isAggregatedBy"/>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#isAnnotatedBy -->
+
+    <owl:ObjectProperty rdf:about="&lmdr;isAnnotatedBy">
+        <rdfs:domain rdf:resource="&lmdr;ImageAnnotation"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&mpeg7;StillRegion"/>
+                    <rdf:Description rdf:about="&lmdr;TextElement"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#isAssociatedTo -->
+
+    <owl:ObjectProperty rdf:about="&lmdr;isAssociatedTo">
+        <rdfs:range rdf:resource="&mpeg7;SemanticDescription"/>
+        <rdfs:domain rdf:resource="&mpeg7;StillRegion"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#isBefore -->
+
+    <owl:ObjectProperty rdf:about="&lmdr;isBefore">
+        <rdfs:label>isBefore</rdfs:label>
+        <rdfs:comment xml:lang="en">Describes a concept that is, in time, created before another object</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="&lmdr;TemporalRelation"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#isEquivalentTo -->
+
+    <owl:ObjectProperty rdf:about="&lmdr;isEquivalentTo">
+        <rdf:type rdf:resource="&owl;SymmetricProperty"/>
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+        <rdfs:comment xml:lang="en">Describes a related object from which the current object is derived</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="&lmdr;SemanticRelation"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#isIfcPropertyOf -->
+
+    <owl:ObjectProperty rdf:about="&lmdr;isIfcPropertyOf">
+        <rdfs:domain rdf:resource="&ifc;IfcProperty"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&ifc;IfcBuildingElement"/>
+                    <rdf:Description rdf:about="&ifc;IfcDistributionElement"/>
+                    <rdf:Description rdf:about="&ifc;IfcOpeningElement"/>
+                    <rdf:Description rdf:about="&ifc;IfcSpatialElement"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#isIncludedBy -->
+
+    <owl:ObjectProperty rdf:about="&lmdr;isIncludedBy">
+        <rdfs:subPropertyOf rdf:resource="&lmdr;TopologicalRelation"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#isNext -->
+
+    <owl:ObjectProperty rdf:about="&lmdr;isNext">
+        <rdfs:label>isAfter</rdfs:label>
+        <rdfs:comment xml:lang="en">Describes an order relation between a media or a media component which position is next to another media or media component and the latter</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="&lmdr;OrderRelation"/>
+        <owl:inverseOf rdf:resource="&lmdr;isPrevious"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#isOn -->
+
+    <owl:ObjectProperty rdf:about="&lmdr;isOn">
+        <rdfs:comment xml:lang="en">Describes a relation between a text element and a page or line containing it</rdfs:comment>
+        <rdfs:domain rdf:resource="&lmdr;TextElement"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&tei;lb"/>
+                    <rdf:Description rdf:about="&tei;pb"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#isOnBottomOf -->
+
+    <owl:ObjectProperty rdf:about="&lmdr;isOnBottomOf">
+        <rdfs:comment xml:lang="en">Describes an object that is on bottom of another object in space </rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="&lmdr;DirectionalRelation"/>
+        <owl:inverseOf rdf:resource="&lmdr;isOnTopOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#isOnTheLeftOf -->
+
+    <owl:ObjectProperty rdf:about="&lmdr;isOnTheLeftOf">
+        <rdfs:comment xml:lang="en">Describes an object that is on the left of another object in space </rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="&lmdr;DirectionalRelation"/>
+        <owl:inverseOf rdf:resource="&lmdr;isOnTheRightOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#isOnTheRightOf -->
+
+    <owl:ObjectProperty rdf:about="&lmdr;isOnTheRightOf">
+        <rdfs:comment xml:lang="en">Describes an object that is on the ight of another object in space </rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="&lmdr;DirectionalRelation"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#isOnTopOf -->
+
+    <owl:ObjectProperty rdf:about="&lmdr;isOnTopOf">
+        <rdfs:comment xml:lang="en">Describes an object that is on top of another object in space </rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="&lmdr;DirectionalRelation"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#isPartOf -->
+
+    <owl:ObjectProperty rdf:about="&lmdr;isPartOf">
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#isPartOf_Object -->
+
+    <owl:ObjectProperty rdf:about="&lmdr;isPartOf_Object">
+        <rdfs:range rdf:resource="&lmdr;Object"/>
+        <rdfs:domain rdf:resource="&lmdr;Object"/>
+        <rdfs:subPropertyOf rdf:resource="&lmdr;isPartOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#isPartOf_mpeg7 -->
+
+    <owl:ObjectProperty rdf:about="&lmdr;isPartOf_mpeg7">
+        <rdfs:subPropertyOf rdf:resource="&lmdr;isPartOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#isPartOf_tei -->
+
+    <owl:ObjectProperty rdf:about="&lmdr;isPartOf_tei">
+        <rdfs:subPropertyOf rdf:resource="&lmdr;isPartOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#isPrevious -->
+
+    <owl:ObjectProperty rdf:about="&lmdr;isPrevious">
+        <rdfs:label>isBefore</rdfs:label>
+        <rdfs:comment xml:lang="en">Describes an order relation between a media or a media component which position is before another media or media component and the latter</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="&lmdr;OrderRelation"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#isPropertyOf -->
+
+    <owl:ObjectProperty rdf:about="&lmdr;isPropertyOf">
+        <rdfs:range rdf:resource="&lmdr;Document"/>
+        <rdfs:domain rdf:resource="&lmdr;DocumentProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#isReferencedBy -->
+
+    <owl:ObjectProperty rdf:about="&lmdr;isReferencedBy">
+        <rdfs:subPropertyOf rdf:resource="&lmdr;SemanticRelation"/>
+        <owl:inverseOf rdf:resource="&lmdr;references"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#isRelatedTo -->
+
+    <owl:ObjectProperty rdf:about="&lmdr;isRelatedTo">
+        <rdf:type rdf:resource="&owl;SymmetricProperty"/>
+        <rdfs:comment xml:lang="en">Describes a relation between a domain and any object</rdfs:comment>
+        <owl:inverseOf rdf:resource="&lmdr;isRelatedTo"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#isRequiredBy -->
+
+    <owl:ObjectProperty rdf:about="&lmdr;isRequiredBy">
+        <rdfs:subPropertyOf rdf:resource="&lmdr;SemanticRelation"/>
+        <owl:inverseOf rdf:resource="&lmdr;requires"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#isRevisedBy -->
+
+    <owl:ObjectProperty rdf:about="&lmdr;isRevisedBy">
+        <rdfs:range rdf:resource="&dc;contributor"/>
+        <owl:inverseOf rdf:resource="&lmdr;revises"/>
+        <rdfs:domain rdf:resource="&tei;change"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#isSourceOf -->
+
+    <owl:ObjectProperty rdf:about="&lmdr;isSourceOf">
+        <rdfs:subPropertyOf rdf:resource="&lmdr;SemanticRelation"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#overlaps -->
+
+    <owl:ObjectProperty rdf:about="&lmdr;overlaps">
+        <rdf:type rdf:resource="&owl;SymmetricProperty"/>
+        <rdfs:comment xml:lang="en">Describes a relation between two obejcts that have intersecting elements in space </rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="&lmdr;TopologicalRelation"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#references -->
+
+    <owl:ObjectProperty rdf:about="&lmdr;references">
+        <rdfs:comment xml:lang="en">Describes a related object that is referenced, cited, or otherwise pointed to by the current object</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="&lmdr;SemanticRelation"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#requires -->
+
+    <owl:ObjectProperty rdf:about="&lmdr;requires">
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+        <rdfs:comment xml:lang="en">Describes a related object that is required by the current object to support its coherence</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="&lmdr;SemanticRelation"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#revises -->
+
+    <owl:ObjectProperty rdf:about="&lmdr;revises">
+        <rdfs:comment xml:lang="en">Describes the relation representing the change made by a contributor to the document</rdfs:comment>
+        <rdfs:domain rdf:resource="&dc;contributor"/>
+        <rdfs:range rdf:resource="&tei;change"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#source -->
+
+    <owl:ObjectProperty rdf:about="&lmdr;source">
+        <rdfs:comment xml:lang="en">Describes a related object from which the current object is derived</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="&lmdr;SemanticRelation"/>
+        <owl:inverseOf rdf:resource="&lmdr;isSourceOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#touches -->
+
+    <owl:ObjectProperty rdf:about="&lmdr;touches">
+        <rdf:type rdf:resource="&owl;SymmetricProperty"/>
+        <rdfs:comment xml:lang="en">Describes a relation between two obejcts that have one boundary element in common in space</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="&lmdr;TopologicalRelation"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.buildingsmart-tech.org/ifcOWL/IFC4_ADD2#ContainedIn -->
+
+    <owl:ObjectProperty rdf:about="&ifc;ContainedIn">
+        <owl:inverseOf rdf:resource="&ifc;contains"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.buildingsmart-tech.org/ifcOWL/IFC4_ADD2#contains -->
+
+    <owl:ObjectProperty rdf:about="&ifc;contains"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#hasValue -->
+
+    <owl:DatatypeProperty rdf:about="&lmdr;hasValue"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://mpeg7.org/#ColorLayout -->
+
+    <owl:Class rdf:about="&mpeg7;ColorLayout">
+        <rdfs:subClassOf rdf:resource="&mpeg7;VisualDescriptor"/>
+    </owl:Class>
+    
+
+
+    <!-- http://mpeg7.org/#Coordinate -->
+
+    <owl:Class rdf:about="&mpeg7;Coordinate">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://mpeg7.org/#DominantColor -->
+
+    <owl:Class rdf:about="&mpeg7;DominantColor">
+        <rdfs:subClassOf rdf:resource="&mpeg7;VisualDescriptor"/>
+    </owl:Class>
+    
+
+
+    <!-- http://mpeg7.org/#EdgeHistogram -->
+
+    <owl:Class rdf:about="&mpeg7;EdgeHistogram">
+        <rdfs:subClassOf rdf:resource="&mpeg7;VisualDescriptor"/>
+    </owl:Class>
+    
+
+
+    <!-- http://mpeg7.org/#HomogeneousTexture -->
+
+    <owl:Class rdf:about="&mpeg7;HomogeneousTexture">
+        <rdfs:subClassOf rdf:resource="&mpeg7;VisualDescriptor"/>
+    </owl:Class>
+    
+
+
+    <!-- http://mpeg7.org/#Image -->
+
+    <owl:Class rdf:about="&mpeg7;Image">
+        <owl:equivalentClass rdf:resource="&lmdr;Image"/>
+    </owl:Class>
+    
+
+
+    <!-- http://mpeg7.org/#Object -->
+
+    <owl:Class rdf:about="&mpeg7;Object">
+        <rdfs:subClassOf rdf:resource="&lmdr;MediaComponent"/>
+    </owl:Class>
+    
+
+
+    <!-- http://mpeg7.org/#Polygon -->
+
+    <owl:Class rdf:about="&mpeg7;Polygon">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://mpeg7.org/#ScalableColor -->
+
+    <owl:Class rdf:about="&mpeg7;ScalableColor">
+        <rdfs:subClassOf rdf:resource="&mpeg7;VisualDescriptor"/>
+    </owl:Class>
+    
+
+
+    <!-- http://mpeg7.org/#SemanticDescription -->
+
+    <owl:Class rdf:about="&mpeg7;SemanticDescription"/>
+    
+
+
+    <!-- http://mpeg7.org/#SpatialMask -->
+
+    <owl:Class rdf:about="&mpeg7;SpatialMask"/>
+    
+
+
+    <!-- http://mpeg7.org/#StillRegion -->
+
+    <owl:Class rdf:about="&mpeg7;StillRegion">
+        <rdfs:subClassOf rdf:resource="&lmdr;MediaComponent"/>
+    </owl:Class>
+    
+
+
+    <!-- http://mpeg7.org/#SubRegion -->
+
+    <owl:Class rdf:about="&mpeg7;SubRegion"/>
+    
+
+
+    <!-- http://mpeg7.org/#VisualDescriptor -->
+
+    <owl:Class rdf:about="&mpeg7;VisualDescriptor"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/contributor -->
+
+    <owl:Class rdf:about="&dc;contributor">
+        <rdfs:subClassOf rdf:resource="&lmdr;AdministrativeMetadata"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/dc/terms/coverage -->
+
+    <owl:Class rdf:about="&dc;coverage">
+        <rdfs:subClassOf rdf:resource="&lmdr;DescriptiveMetadata"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/dc/terms/created -->
+
+    <owl:Class rdf:about="&dc;created">
+        <rdfs:subClassOf rdf:resource="&dc;date"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/dc/terms/creator -->
+
+    <owl:Class rdf:about="&dc;creator">
+        <rdfs:subClassOf rdf:resource="&lmdr;DescriptiveMetadata"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/dc/terms/date -->
+
+    <owl:Class rdf:about="&dc;date">
+        <rdfs:subClassOf rdf:resource="&lmdr;AdministrativeMetadata"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/dc/terms/description -->
+
+    <owl:Class rdf:about="&dc;description">
+        <rdfs:subClassOf rdf:resource="&lmdr;DescriptiveMetadata"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/dc/terms/extent -->
+
+    <owl:Class rdf:about="&dc;extent">
+        <rdfs:subClassOf rdf:resource="&dc;format"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/dc/terms/format -->
+
+    <owl:Class rdf:about="&dc;format">
+        <rdfs:subClassOf rdf:resource="&lmdr;AdministrativeMetadata"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/dc/terms/identifier -->
+
+    <owl:Class rdf:about="&dc;identifier">
+        <rdfs:subClassOf rdf:resource="&lmdr;DescriptiveMetadata"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/dc/terms/language -->
+
+    <owl:Class rdf:about="&dc;language">
+        <rdfs:subClassOf rdf:resource="&lmdr;DescriptiveMetadata"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/dc/terms/modified -->
+
+    <owl:Class rdf:about="&dc;modified">
+        <rdfs:subClassOf rdf:resource="&dc;date"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/dc/terms/rights -->
+
+    <owl:Class rdf:about="&dc;rights">
+        <rdfs:subClassOf rdf:resource="&lmdr;AdministrativeMetadata"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/dc/terms/spatial -->
+
+    <owl:Class rdf:about="&dc;spatial">
+        <rdfs:subClassOf rdf:resource="&dc;coverage"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/dc/terms/subject -->
+
+    <owl:Class rdf:about="&dc;subject">
+        <rdfs:subClassOf rdf:resource="&lmdr;DescriptiveMetadata"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/dc/terms/temporal -->
+
+    <owl:Class rdf:about="&dc;temporal">
+        <rdfs:subClassOf rdf:resource="&dc;coverage"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/dc/terms/title -->
+
+    <owl:Class rdf:about="&dc;title">
+        <rdfs:subClassOf rdf:resource="&lmdr;DescriptiveMetadata"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/dc/terms/type -->
+
+    <owl:Class rdf:about="&dc;type">
+        <rdfs:subClassOf rdf:resource="&lmdr;DescriptiveMetadata"/>
+    </owl:Class>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#Acoustic -->
+
+    <owl:Class rdf:about="&lmdr;Acoustic">
+        <rdfs:label xml:lang="fr">performance</rdfs:label>
+        <rdfs:label xml:lang="fr">propriété acoustique</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ifc;IfcProperty"/>
+    </owl:Class>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#AcousticInsulation -->
+
+    <owl:Class rdf:about="&lmdr;AcousticInsulation">
+        <rdfs:label xml:lang="fr">Rw+Ctr</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&lmdr;Acoustic"/>
+    </owl:Class>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#AdministrativeMetadata -->
+
+    <owl:Class rdf:about="&lmdr;AdministrativeMetadata">
+        <rdfs:subClassOf rdf:resource="&lmdr;DocumentProperty"/>
+    </owl:Class>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#Construction -->
+
+    <owl:Class rdf:about="&lmdr;Construction">
+        <rdfs:subClassOf rdf:resource="&lmdr;Domain"/>
+        <rdfs:comment xml:lang="en">Represents an abstraction of the construction domain concepts from external construction related knowledge base or ontology</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#DescriptiveMetadata -->
+
+    <owl:Class rdf:about="&lmdr;DescriptiveMetadata">
+        <rdfs:subClassOf rdf:resource="&lmdr;DocumentProperty"/>
+    </owl:Class>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#DiscomfortRate -->
+
+    <owl:Class rdf:about="&lmdr;DiscomfortRate">
+        <rdfs:subClassOf rdf:resource="&lmdr;ThermalConfort"/>
+    </owl:Class>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#Document -->
+
+    <owl:Class rdf:about="&lmdr;Document">
+        <rdfs:subClassOf rdf:resource="&lmdr;Object"/>
+        <rdfs:comment xml:lang="en">Represents an electronic format and provides information in form of text, image, etc.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#DocumentProperty -->
+
+    <owl:Class rdf:about="&lmdr;DocumentProperty"/>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#Domain -->
+
+    <owl:Class rdf:about="&lmdr;Domain">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&lmdr;isRelatedTo"/>
+                <owl:allValuesFrom rdf:resource="&lmdr;Object"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Represents an abstraction of any domain-specific concept from external knowledge base or ontology (e.g., concepts of the ifcOWL~\cite{IfcOWL2018Web} ontology in the building construction industry)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#IFC -->
+
+    <owl:Class rdf:about="&lmdr;IFC">
+        <rdfs:subClassOf rdf:resource="&lmdr;Construction"/>
+        <rdfs:comment xml:lang="en">Represents an abstraction of concepts provided by the IFC standard or adapted to the IFC standard</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#Image -->
+
+    <owl:Class rdf:about="&lmdr;Image">
+        <rdfs:subClassOf rdf:resource="&lmdr;Media"/>
+    </owl:Class>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#ImageAnnotation -->
+
+    <owl:Class rdf:about="&lmdr;ImageAnnotation">
+        <rdfs:subClassOf rdf:resource="&lmdr;Image"/>
+        <rdfs:subClassOf rdf:resource="&lmdr;text"/>
+        <rdfs:comment xml:lang="en">Represents an annotation of an image with either a text block or another image (e.g., tag an image with another image)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#ImageGraphic -->
+
+    <owl:Class rdf:about="&lmdr;ImageGraphic">
+        <rdfs:subClassOf rdf:resource="&lmdr;Image"/>
+        <rdfs:subClassOf rdf:resource="&tei;graphic"/>
+        <rdfs:comment xml:lang="en">Represents an image inside a textual content</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#LightTransmission -->
+
+    <owl:Class rdf:about="&lmdr;LightTransmission">
+        <rdfs:label xml:lang="fr">transmission lumineuse</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&lmdr;Thermal"/>
+    </owl:Class>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#Media -->
+
+    <owl:Class rdf:about="&lmdr;Media">
+        <rdfs:subClassOf rdf:resource="&lmdr;Object"/>
+        <rdfs:comment xml:lang="en">Represents the main means of information communication e.g., text, image, etc.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#MediaComponent -->
+
+    <owl:Class rdf:about="&lmdr;MediaComponent">
+        <rdfs:subClassOf rdf:resource="&lmdr;Object"/>
+        <rdfs:comment xml:lang="en">Represents an abstraction of any element that constitutes the media, whether it is of a high or small granularity</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#Object -->
+
+    <owl:Class rdf:about="&lmdr;Object">
+        <rdfs:comment xml:lang="en">Represents the abstraction of a document, a media and media component to represent common properties and characteristics.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#SolarFactor -->
+
+    <owl:Class rdf:about="&lmdr;SolarFactor">
+        <rdfs:label xml:lang="fr">facteur solaire</rdfs:label>
+        <rdfs:label xml:lang="fr">sw</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&lmdr;Thermal"/>
+    </owl:Class>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#TextElement -->
+
+    <owl:Class rdf:about="&lmdr;TextElement">
+        <rdfs:subClassOf rdf:resource="&lmdr;MediaComponent"/>
+        <rdfs:comment xml:lang="en">Represents any structural component that constitutes a text content e.g., section, paragraph, etc.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#TextStillRegion -->
+
+    <owl:Class rdf:about="&lmdr;TextStillRegion">
+        <rdfs:subClassOf rdf:resource="&mpeg7;StillRegion"/>
+        <rdfs:subClassOf rdf:resource="&lmdr;text"/>
+        <rdfs:comment xml:lang="en">Represents a text inside an image. It is defined to combine the detailed metadata descriptors on the text (e.g., decomposition of a sentence into multiple words) and those of an element inside an image (e.g., containing still region)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#Thermal -->
+
+    <owl:Class rdf:about="&lmdr;Thermal">
+        <rdfs:label xml:lang="fr">composition</rdfs:label>
+        <rdfs:label xml:lang="fr">performance</rdfs:label>
+        <rdfs:label xml:lang="fr">propriété thermique</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ifc;IfcProperty"/>
+    </owl:Class>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#ThermalConductivity -->
+
+    <owl:Class rdf:about="&lmdr;ThermalConductivity">
+        <rdfs:label xml:lang="fr">Uw</rdfs:label>
+        <rdfs:label xml:lang="fr">conduction thermique</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&lmdr;Thermal"/>
+    </owl:Class>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#ThermalConfort -->
+
+    <owl:Class rdf:about="&lmdr;ThermalConfort">
+        <rdfs:subClassOf rdf:resource="&lmdr;Thermal"/>
+    </owl:Class>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#ThermalInsulation -->
+
+    <owl:Class rdf:about="&lmdr;ThermalInsulation">
+        <rdfs:label xml:lang="fr">R(W/m2.K)</rdfs:label>
+        <rdfs:label xml:lang="fr">isolation thermique</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&lmdr;Thermal"/>
+    </owl:Class>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#ThermalZone -->
+
+    <owl:Class rdf:about="&lmdr;ThermalZone">
+        <rdfs:subClassOf rdf:resource="&ifc;IfcSpatialZone"/>
+    </owl:Class>
+    
+
+
+    <!-- http://spider.sigappfr.org/linkedmdr/#text -->
+
+    <owl:Class rdf:about="&lmdr;text">
+        <owl:equivalentClass rdf:resource="&tei;text"/>
+        <rdfs:subClassOf rdf:resource="&lmdr;Media"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.buildingsmart-tech.org/ifcOWL/IFC4_ADD2#IfcBuilding -->
+
+    <owl:Class rdf:about="&ifc;IfcBuilding">
+        <rdfs:subClassOf rdf:resource="&ifc;IfcSpatialElement"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.buildingsmart-tech.org/ifcOWL/IFC4_ADD2#IfcBuildingElement -->
+
+    <owl:Class rdf:about="&ifc;IfcBuildingElement">
+        <rdfs:subClassOf rdf:resource="&lmdr;IFC"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&ifc;ContainedIn"/>
+                <owl:allValuesFrom rdf:resource="&ifc;IfcSpatialElement"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.buildingsmart-tech.org/ifcOWL/IFC4_ADD2#IfcBuildingSystem -->
+
+    <owl:Class rdf:about="&ifc;IfcBuildingSystem">
+        <rdfs:subClassOf rdf:resource="&ifc;IfcSystem"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.buildingsmart-tech.org/ifcOWL/IFC4_ADD2#IfcDistributionElement -->
+
+    <owl:Class rdf:about="&ifc;IfcDistributionElement">
+        <rdfs:subClassOf rdf:resource="&lmdr;IFC"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&ifc;ContainedIn"/>
+                <owl:allValuesFrom rdf:resource="&ifc;IfcSpatialElement"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.buildingsmart-tech.org/ifcOWL/IFC4_ADD2#IfcDistributionSystem -->
+
+    <owl:Class rdf:about="&ifc;IfcDistributionSystem">
+        <rdfs:subClassOf rdf:resource="&ifc;IfcSystem"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&lmdr;Aggregates"/>
+                <owl:someValuesFrom rdf:resource="&ifc;IfcDistributionElement"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.buildingsmart-tech.org/ifcOWL/IFC4_ADD2#IfcDoor -->
+
+    <owl:Class rdf:about="&ifc;IfcDoor">
+        <rdfs:label xml:lang="fr">porte</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ifc;IfcBuildingElement"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.buildingsmart-tech.org/ifcOWL/IFC4_ADD2#IfcMaterial -->
+
+    <owl:Class rdf:about="&ifc;IfcMaterial">
+        <rdfs:subClassOf rdf:resource="&lmdr;IFC"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.buildingsmart-tech.org/ifcOWL/IFC4_ADD2#IfcOpeningElement -->
+
+    <owl:Class rdf:about="&ifc;IfcOpeningElement">
+        <rdfs:label xml:lang="fr">baies</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&lmdr;IFC"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.buildingsmart-tech.org/ifcOWL/IFC4_ADD2#IfcProperty -->
+
+    <owl:Class rdf:about="&ifc;IfcProperty">
+        <rdfs:subClassOf rdf:resource="&lmdr;IFC"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.buildingsmart-tech.org/ifcOWL/IFC4_ADD2#IfcSite -->
+
+    <owl:Class rdf:about="&ifc;IfcSite">
+        <rdfs:subClassOf rdf:resource="&ifc;IfcSpatialElement"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.buildingsmart-tech.org/ifcOWL/IFC4_ADD2#IfcSpace -->
+
+    <owl:Class rdf:about="&ifc;IfcSpace">
+        <rdfs:subClassOf rdf:resource="&ifc;IfcSpatialElement"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.buildingsmart-tech.org/ifcOWL/IFC4_ADD2#IfcSpatialElement -->
+
+    <owl:Class rdf:about="&ifc;IfcSpatialElement">
+        <rdfs:subClassOf rdf:resource="&lmdr;IFC"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.buildingsmart-tech.org/ifcOWL/IFC4_ADD2#IfcSpatialZone -->
+
+    <owl:Class rdf:about="&ifc;IfcSpatialZone">
+        <rdfs:subClassOf rdf:resource="&ifc;IfcSpatialElement"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.buildingsmart-tech.org/ifcOWL/IFC4_ADD2#IfcSystem -->
+
+    <owl:Class rdf:about="&ifc;IfcSystem">
+        <rdfs:subClassOf rdf:resource="&lmdr;IFC"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.buildingsmart-tech.org/ifcOWL/IFC4_ADD2#IfcWall -->
+
+    <owl:Class rdf:about="&ifc;IfcWall">
+        <rdfs:subClassOf rdf:resource="&ifc;IfcBuildingElement"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.buildingsmart-tech.org/ifcOWL/IFC4_ADD2#IfcWindow -->
+
+    <owl:Class rdf:about="&ifc;IfcWindow">
+        <rdfs:label xml:lang="fr">chassis fixes</rdfs:label>
+        <rdfs:label xml:lang="fr">chassis vitrés</rdfs:label>
+        <rdfs:label xml:lang="fr">fenêtre</rdfs:label>
+        <rdfs:label xml:lang="fr">vitrage</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ifc;IfcBuildingElement"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.tei-c.org/release/doc/tei-p5-doc/en/html/#cell -->
+
+    <owl:Class rdf:about="&tei;cell">
+        <rdfs:subClassOf rdf:resource="&lmdr;TextElement"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.tei-c.org/release/doc/tei-p5-doc/en/html/#change -->
+
+    <owl:Class rdf:about="&tei;change">
+        <rdfs:subClassOf rdf:resource="&lmdr;AdministrativeMetadata"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.tei-c.org/release/doc/tei-p5-doc/en/html/#div -->
+
+    <owl:Class rdf:about="&tei;div">
+        <rdfs:subClassOf rdf:resource="&lmdr;TextElement"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.tei-c.org/release/doc/tei-p5-doc/en/html/#divGen -->
+
+    <owl:Class rdf:about="&tei;divGen">
+        <rdfs:subClassOf rdf:resource="&lmdr;TextElement"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.tei-c.org/release/doc/tei-p5-doc/en/html/#figDesc -->
+
+    <owl:Class rdf:about="&tei;figDesc">
+        <rdfs:subClassOf rdf:resource="&lmdr;TextElement"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.tei-c.org/release/doc/tei-p5-doc/en/html/#figure -->
+
+    <owl:Class rdf:about="&tei;figure">
+        <rdfs:subClassOf rdf:resource="&lmdr;TextElement"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.tei-c.org/release/doc/tei-p5-doc/en/html/#formula -->
+
+    <owl:Class rdf:about="&tei;formula">
+        <rdfs:subClassOf rdf:resource="&lmdr;TextElement"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.tei-c.org/release/doc/tei-p5-doc/en/html/#graphic -->
+
+    <owl:Class rdf:about="&tei;graphic">
+        <rdfs:subClassOf rdf:resource="&tei;formula"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.tei-c.org/release/doc/tei-p5-doc/en/html/#head -->
+
+    <owl:Class rdf:about="&tei;head">
+        <rdfs:subClassOf rdf:resource="&lmdr;TextElement"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.tei-c.org/release/doc/tei-p5-doc/en/html/#item -->
+
+    <owl:Class rdf:about="&tei;item">
+        <rdfs:subClassOf rdf:resource="&lmdr;TextElement"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.tei-c.org/release/doc/tei-p5-doc/en/html/#lb -->
+
+    <owl:Class rdf:about="&tei;lb"/>
+    
+
+
+    <!-- http://www.tei-c.org/release/doc/tei-p5-doc/en/html/#list -->
+
+    <owl:Class rdf:about="&tei;list">
+        <rdfs:subClassOf rdf:resource="&lmdr;TextElement"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.tei-c.org/release/doc/tei-p5-doc/en/html/#note -->
+
+    <owl:Class rdf:about="&tei;note">
+        <rdfs:subClassOf rdf:resource="&lmdr;TextElement"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.tei-c.org/release/doc/tei-p5-doc/en/html/#p -->
+
+    <owl:Class rdf:about="&tei;p">
+        <rdfs:subClassOf rdf:resource="&lmdr;TextElement"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.tei-c.org/release/doc/tei-p5-doc/en/html/#pb -->
+
+    <owl:Class rdf:about="&tei;pb">
+        <rdfs:comment>this is a test</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.tei-c.org/release/doc/tei-p5-doc/en/html/#revisionDesc -->
+
+    <owl:Class rdf:about="&tei;revisionDesc">
+        <rdfs:subClassOf rdf:resource="&lmdr;AdministrativeMetadata"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.tei-c.org/release/doc/tei-p5-doc/en/html/#row -->
+
+    <owl:Class rdf:about="&tei;row">
+        <rdfs:subClassOf rdf:resource="&lmdr;TextElement"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.tei-c.org/release/doc/tei-p5-doc/en/html/#s -->
+
+    <owl:Class rdf:about="&tei;s">
+        <rdfs:subClassOf rdf:resource="&lmdr;TextElement"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.tei-c.org/release/doc/tei-p5-doc/en/html/#seg -->
+
+    <owl:Class rdf:about="&tei;seg">
+        <rdfs:subClassOf rdf:resource="&lmdr;TextElement"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.tei-c.org/release/doc/tei-p5-doc/en/html/#table -->
+
+    <owl:Class rdf:about="&tei;table">
+        <rdfs:subClassOf rdf:resource="&lmdr;TextElement"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.tei-c.org/release/doc/tei-p5-doc/en/html/#text -->
+
+    <owl:Class rdf:about="&tei;text"/>
+    
+
+
+    <!-- http://www.tei-c.org/release/doc/tei-p5-doc/en/html/#w -->
+
+    <owl:Class rdf:about="&tei;w">
+        <rdfs:subClassOf rdf:resource="&lmdr;TextElement"/>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net -->
+
