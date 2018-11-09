@@ -12,5 +12,5 @@ LinkedMDR is made of three main layers:
 
 The multi-layering of LinkedMDR ensures its genericity and extensibility.
 
-This version of LinkedMDR is based on descriptors from DC, TEI and MPEG-7 standards for the standardized metadata layer and an adapted version of the ifcOWL ontology for the pluggable domain-specific layer.
+This version of LinkedMDR is based on descriptors from DC (http://dublincore.org/documents/dcmi-terms/), TEI (http://www.tei-c.org/release/doc/tei-p5-doc/en/Guidelines.pdf) and MPEG-7 (https://mpeg.chiariglione.org/standards/mpeg-7) standards for the standardized metadata layer and an adapted version of the ifcOWL ontology (http://openbimstandards.org/standards/ifcowl/) for the pluggable domain-specific layer.
 It is applied in the Architecture, Engineering, and Construction (AEC) industry.
